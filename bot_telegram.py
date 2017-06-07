@@ -108,7 +108,7 @@ def handle(msg):
     else:
         bot.sendMessage(chat_id, 'Eu nÃ£o entendo esse comando. Utilize /help@ittalarmpi_bot para verificar a lista de comandos disponÃ­veis.')
 
-bot = telepot.Bot('378434389:AAGVOVAmRj8OBByMAvHe-lBktNWowuxYa3w')
+bot = telepot.Bot('Insert_Token_code_here')
 bot.message_loop(handle)
 print ('Aguardando comandos ...')
 print ("Nome\t\tChat\t\tData\t\t\tComando")

@@ -6,6 +6,11 @@ import time
 import random
 import datetime
 import telepot
+import picamera
+from time import sleep
+
+camera = picamera.PiCamera()
+camera.vflip = True
 
 sensor = Adafruit_DHT.DHT22
 pin = 7
@@ -102,9 +107,19 @@ def handle(msg):
     elif command == '/circuit' or command == '/circuit@ittalarmpi_bot':
         log_dados()
         bot.sendPhoto(chat_id, photo = open('circuit.png', 'rb'), caption = 'Veja o circuito ligado na minha GPIO.') 
+    elif command == '/picture' or command == '/picture@ittalarmpi_bot':
+        log_dados()
+        camera.capture('image1.jpg')
+        bot.sendPhoto(chat_id, photo = open('image1.jpg', 'rb'), caption = ' ')
+    elif command == '/video' or command == '/video@ittalarmpi_bot':
+        log_dados()
+        camera.start_recording('video.h264')
+        sleep(5)
+        camera.stop_recording()
+        bot.sendVideo(chat_id, video = open('video.h264', 'rb'), caption = ' ')
     elif command == '/help' or command == '/help@ittalarmpi_bot':
         log_dados()
-        bot.sendMessage(chat_id, "VocÃª pode me enviar os seguitentes comandos:\n\n/temp - Medir a temperatura e Ãºmidade relativa do ar\n/read - Ver os dez Ãºltimos registros do log de eventos\n/ledon - Ligar led vermelho\n/ledoff - Desligar led vermelho\n/circuit - Mostrar o circuito ligado no meu GPIO\n/roll - Jogar o dado\n/time - Mostrar a data e hora atual")
+        bot.sendMessage(chat_id, "VocÃª pode me enviar os seguitentes comandos:\n\n/temp - Medir a temperatura e Ãºmidade relativa do ar\n/read - Ver os dez Ãºltimos registros do log de eventos\n/ledon - Ligar led vermelho\n/ledoff - Desligar led vermelho\n/circuit - Mostrar o circuito ligado no meu GPIO\n/roll - Jogar o dado\n/time - Mostrar a data e hora atual/picture - Tirar uma foto\n/video - Fazer um vÃ­deo de 5 segundos\n/code - Acessar o cÃ³digo fonte que estou rodando")
     else:
         bot.sendMessage(chat_id, 'Eu nÃ£o entendo esse comando. Utilize /help@ittalarmpi_bot para verificar a lista de comandos disponÃ­veis.')
 

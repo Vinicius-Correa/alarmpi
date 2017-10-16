@@ -120,6 +120,9 @@ def handle(msg):
     elif command == '/help' or command == '/help@ittalarmpi_bot':
         log_dados()
         bot.sendMessage(chat_id, "VocÃª pode me enviar os seguitentes comandos:\n\n/temp - Medir a temperatura e Ãºmidade relativa do ar\n/read - Ver os dez Ãºltimos registros do log de eventos\n/ledon - Ligar led vermelho\n/ledoff - Desligar led vermelho\n/circuit - Mostrar o circuito ligado no meu GPIO\n/roll - Jogar o dado\n/time - Mostrar a data e hora atual/picture - Tirar uma foto\n/video - Fazer um vÃ­deo de 5 segundos\n/code - Acessar o cÃ³digo fonte que estou rodando")
+    elif command == '/code' or command == '/code@ittalarmpi_bot':
+        log_dados()
+        bot.sendMessage(chat_id, "Estou rodando o cÃ³digo hospedado no endereÃ§o https://github.com/Vinicius-Correa/alarmpi")
     else:
         bot.sendMessage(chat_id, 'Eu nÃ£o entendo esse comando. Utilize /help@ittalarmpi_bot para verificar a lista de comandos disponÃ­veis.')
 

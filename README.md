@@ -2,7 +2,7 @@
 
 Você pode enviar os seguitentes comandos via Bot no Telegram:
 
-/temp - Medir a temperatura e úmidade relativa do ar
+/temp - Medir a temperatura e úmidade relativa do ar\n
 /read - Ver os dez últimos registros do log de eventos
 /ledon - Ligar led vermelho
 /ledoff - Desligar led vermelho

@@ -81,7 +81,7 @@ class UpdateThread(Thread):
             media_bmp180_p = stats.trim_mean(df2[3], 0.25)
             print("Media = ",stats.trim_mean(df2, 0.25))
             df2 = pd.DataFrame(columns={0 : 'Dht22-t', 1 : 'Dht22-h', 2 : 'Bmp180-t', 3 : 'Bmp180-p'})
-            mariadb_connection = mariadb.connect(user='pi', password='pi', database='datalogger')
+            mariadb_connection = mariadb.connect(user='user', password='pass', database='datalogger')
             cursor = mariadb_connection.cursor()
             cursor.execute ("INSERT INTO sensores VALUES (NOW(), %.2f, %.2f, %.2f, %.2f, %s )" % (media_dht22_t, media_dht22_h, media_bmp180_t, media_bmp180_p, sequencia))
             mariadb_connection.commit()
@@ -192,7 +192,7 @@ def handle(msg):
     else:
         bot.sendMessage(chat_id, 'Eu nao entendo esse comando. Utilize /help@ittalarmpi_bot para verificar a lista de comandos disponiveis.')
 
-bot = telepot.Bot('378434389:AAGVOVAmRj8OBByMAvHe-lBktNWowuxYa3w')
+bot = telepot.Bot('INSERT TOKEN FOR BOT')
 bot.message_loop(handle)
 
 while contador < 6:
@@ -214,7 +214,7 @@ while contador < 6:
         soma_bmp180_t = 0.0
         soma_bmp180_p = 0.0
 
-mariadb_connection = mariadb.connect(user='pi', password='pi', database='datalogger')
+mariadb_connection = mariadb.connect(user='user', password='pass', database='datalogger')
 cursor = mariadb_connection.cursor()
 cursor.execute("SELECT MAX(seq) AS seq FROM sensores");
 results = pd.DataFrame(cursor.fetchall())
